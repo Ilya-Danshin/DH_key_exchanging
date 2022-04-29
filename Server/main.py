@@ -4,7 +4,10 @@ import socket
 
 def main():
     host = "127.0.0.1"
-    port = 8080
+    port = int(input())
+    while port < 1024 or port > 65535:
+        print("Incorrect port")
+        port = int(input())
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((host, port))
